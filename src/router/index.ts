@@ -1,5 +1,4 @@
-import { RouteRecordRaw, createRouter, createWebHashHistory} from "vue-router";
-
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
   {
@@ -9,18 +8,24 @@ const routes: RouteRecordRaw[] = [
     component: () => import("../components/productList.vue"),
   },
   {
-    path: "/products/new",
+    path: "/",
+    alias: "/products/new",
     name: "products-new",
     component: () => import("../components/productForm.vue"),
   },
   {
-    path: "/products/:id",
+    path: "/",
+    alias: "/products/:id",
     name: "products-details",
     component: () => import("../components/productDetails.vue"),
   },
-]
+];
+
+console.log(process.env.BASE_URL);
+
 const router = createRouter({
-    history: createWebHashHistory(),
-    routes,
-})
+  history: createWebHistory(),
+  routes,
+});
+
 export default router;
